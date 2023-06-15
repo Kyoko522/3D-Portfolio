@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { Clock, Vector3 } from 'three';
+import * as Yuka from 'yuka';
 
 const clock = new Clock();
 
@@ -296,4 +297,4 @@ window.addEventListener('mousemove', (event) => {
   mouseX = event.clientX;
   mouseY = event.clientY;
   modelFollowsCursor = true; // Start following the cursor when mouse movement is detected
-});
+}); 

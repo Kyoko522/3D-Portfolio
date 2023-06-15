@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { Clock, Vector3 } from 'three';
 import * as Yuka from 'yuka';
+// import * as DAT from 'https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.module.js'
 
 const clock = new Clock();
 
@@ -32,16 +33,18 @@ renderer.render(scene, camera);
 
 // adding the model to the scene
 const loader = new GLTFLoader();
-let model;//declaring the model to the scene
 
 function loadModel() {
   loader.load(
     'model.gltf',
     function (gltf) {
       const model = gltf.scene;
-
-      model.position.set(0,0,0);
+      model.position.set(-10,0,0);
       scene.add(model);
+
+    // Create a pursuit behavior and assign it to the loaded model
+    const pursuitBehavior = new YUKA.PursuitBehavior(target);
+    model.pursuitBehavior = pursuitBehavior;
     },
     undefined,
     function (error) {
@@ -146,9 +149,9 @@ function addStar() {
   star7.position.set(x7, y7, z7);
 
   scene.add(star, star2, star3, star4, star5, star6, star7);
+  
 }
 Array(9000).fill().forEach(addStar);
-
 // Background
 
 const spaceTexture = new THREE.TextureLoader();
@@ -157,13 +160,13 @@ scene.background = spaceTexture;
 // Avatar
 
 const sheelTexture = new THREE.TextureLoader().load('sheel.png');
+// const sheelTec = new THREE.Texture(sheelTexture                      //this is if i want to add more picture to the box, which i will do later
 
 const sheel = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map:sheelTexture}));
 
 scene.add(sheel);
 
 // Earth
-
 const earthTexture = new THREE.TextureLoader().load('earth.jpg');
 const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
@@ -223,59 +226,50 @@ document.body.onscroll = moveCamera;
 moveCamera();
 
 // Animation Loop
-
 function animate() {
-  requestAnimationFrame(animate);
-
-  if (modelFollowsCursor) {
-    elapsedTime += clock.getDelta() * 1000; // Calculate elapsed time
+    requestAnimationFrame(animate);
+  
+    if (modelFollowsCursor) {
+      elapsedTime += clock.getDelta() * 1000; // Calculate elapsed time
+  
+      if (elapsedTime > delayTimer) {
+        const mouseNormalizedX = (mouseX / window.innerWidth) * 2 - 1;
+        const mouseNormalizedY = -(mouseY / window.innerHeight) * 2 + 1;
+  
+        // Convert mouse position to three.js world coordinates
+        const vector = new THREE.Vector3(
+          mouseNormalizedX,
+          mouseNormalizedY,
+          0.5
+        ).unproject(camera);
+  
+        // Set the position of the model to follow the cursor
+        model.position.copy(vector);
+        }
+        elapsedTime = 0; // Reset the elapsed time
+      }
     
-    if (elapsedTime > delayTimer) {
-      const mouseNormalizedX = (mouseX / window.innerWidth) * 2 - 1;
-      const mouseNormalizedY = -(mouseY / window.innerHeight) * 2 + 1;
-
-      // Convert mouse position to three.js world coordinates
-      const vector = new THREE.Vector3(
-        mouseNormalizedX,
-        mouseNormalizedY,
-        0.5
-      ).unproject(camera);
-
-      // // Set the position of the model to follow the cursor
-      // model.position.copy(vector);
-
-      elapsedTime = 0; // Reset the elapsed time
-
-      
-    }
+  
+    torus.rotation.x -= 0.11865367;
+    torus.rotation.y -= 0.119367;
+    torus.rotation.z -= 0.4354678;
+  
+    torus2.rotation.x += 0.08312087;
+    torus2.rotation.y += 0.082093;
+    torus2.rotation.z += 0.073049856;
+  
+    torus3.rotation.x -= 0.02;
+    torus3.rotation.y += 0.01;
+    torus3.rotation.z -= 0.02;
+  
+    earth.rotation.x += 0.005;
+  
+    sheel.rotation.y += 0.05;
+    sheel.rotation.z += 0.02;
+  
+    renderer.render(scene, camera);
   }
-
-
-  torus.rotation.x -= 0.11865367;
-  torus.rotation.y -= 0.119367;
-  torus.rotation.z -= 0.4354678;
-
-  torus2.rotation.x += 0.08312087;
-  torus2.rotation.y += 0.082093;
-  torus2.rotation.z += 0.073049856;
-
-  torus3.rotation.x -= 0.02;
-  torus3.rotation.y += 0.01;
-  torus3.rotation.z -= 0.02;
-
-  earth.rotation.x += 0.005;
-
-  sheel.rotation.y += 0.05;
-  sheel.rotation.z += 0.02;
-
-  //print where the camera is located
-  console.log(camera.position)
-
-  // controls.update();
-
-  renderer.render(scene, camera);
-
-}
+  
 
 
 const loop = () => {
@@ -298,3 +292,19 @@ window.addEventListener('mousemove', (event) => {
   mouseY = event.clientY;
   modelFollowsCursor = true; // Start following the cursor when mouse movement is detected
 }); 
+
+
+// const pursuer = new YUKA.GameEntity();
+// const target = new YUKA.GameEntity();
+
+// pursuer.position.set(-10, 0, 0);
+// target.position.set(0, 0, 0); // Set the initial position of the target entity
+
+// const entityManager = new YUKA.EntityManager();
+// entityManager.add(pursuer);
+// entityManager.add(target);
+
+// const pursuitBehavior = new YUKA.PursuitBehavior(target);
+// pursuer.steering.add(pursuitBehavior);
+  
+

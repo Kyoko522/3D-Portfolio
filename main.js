@@ -31,32 +31,34 @@ camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
-// adding the model to the scene
-const loader = new GLTFLoader();
+//Rocket
+const model = new GLTFLoader();
 
-function loadModel() {
-  loader.load(
-    'model.gltf',
-    function (gltf) {
-      const model = gltf.scene;
-      model.position.set(-10,0,0);
-      scene.add(model);
+model.load('model.gltf', function (gltf) {
+  const rocket = gltf.scene;
+  scene.add(rocket);
 
-    // Create a pursuit behavior and assign it to the loaded model
-    const pursuitBehavior = new YUKA.PursuitBehavior(target);
-    model.pursuitBehavior = pursuitBehavior;
-    },
-    undefined,
-    function (error) {
-      console.error(error);
-    }
-  );
-}
+  // Set initial rotation
+  rocket.rotation.y = Math.PI / 2; // Adjust the angle as needed
 
-loadModel();
+  // Animation function to rotate the model
+  function animate() {
+    requestAnimationFrame(animate);
+
+    // Rotate the model
+    rocket.rotation.y += 0.01; // Adjust the rotation speed as needed
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+}, undefined, function (error) {
+  console.error("The model failed to load:", error);
+});
+
+
 
 // Torus
-
 const geometry = new THREE.TorusGeometry(6, 0.87, 30, 1000, );
 const material = new THREE.MeshStandardMaterial({ color: "#A020F0" });
 const torus = new THREE.Mesh(geometry, material);
@@ -186,8 +188,8 @@ earth.position.x = -80;
 sheel.position.z = -5;
 sheel.position.x = 2;
 
-// Sun
 
+// Sun
 const sunTexture = new THREE.TextureLoader().load('sun_texture.jpg');
 
 const sun = new THREE.Mesh(
@@ -243,8 +245,6 @@ function animate() {
           0.5
         ).unproject(camera);
   
-        // Set the position of the model to follow the cursor
-        model.position.copy(vector);
         }
         elapsedTime = 0; // Reset the elapsed time
       }
@@ -292,19 +292,5 @@ window.addEventListener('mousemove', (event) => {
   mouseY = event.clientY;
   modelFollowsCursor = true; // Start following the cursor when mouse movement is detected
 }); 
-
-
-// const pursuer = new YUKA.GameEntity();
-// const target = new YUKA.GameEntity();
-
-// pursuer.position.set(-10, 0, 0);
-// target.position.set(0, 0, 0); // Set the initial position of the target entity
-
-// const entityManager = new YUKA.EntityManager();
-// entityManager.add(pursuer);
-// entityManager.add(target);
-
-// const pursuitBehavior = new YUKA.PursuitBehavior(target);
-// pursuer.steering.add(pursuitBehavior);
   
 

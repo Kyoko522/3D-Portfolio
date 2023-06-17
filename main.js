@@ -3,11 +3,10 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { Clock, Vector3 } from 'three';
-import * as Yuka from 'yuka';
+import * as YUKA from 'yuka';
 // import * as DAT from 'https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.module.js'
 
 const clock = new Clock();
-
 
 // Setup
 let mouseX = 0;
@@ -41,22 +40,56 @@ model.load('model.gltf', function (gltf) {
   // Set initial rotation
   rocket.rotation.y = Math.PI / 2; // Adjust the angle as needed
 
+  //rocket tracking
+  function sync (entity, renderComponent){
+    readerComponent.matrix.copy(entity.worldMatrix);
+  }
+
+  const pursuer = new YUKA.Vehicle();
+  pursuer.setRenderComponent(rocket, sync);
+  YUKA.EntityManager.add(pursuer);
+  pursuer.position.set(-10, 0, -3);
+  pursuer.maxSpeed = 3;
+
+  const evaderGeometry = new THREE.SphereBufferGeometry(0.01);
+const evaderMaterial = new THREE.MeshPhongMaterial({color: 0xFFEA00});
+const evaderMesh = new THREE.Mesh(evaderGeometry, evaderMaterial);
+evaderMesh.matrixAutoUpdate = false;
+scene.add(evaderMesh);
+
+const evader = new YUKA.Vehicle();
+evader.setRenderComponent(evaderMesh, sync);
+entityManager.add(evader);
+evader.position.set(2, 0, -3);
+evader.maxSpeed = 2;
+
+const pursuitBehavior = new YUKA.PursuitBehavior(evader, 5);
+pursuer.steering.add(pursuitBehavior);
+
+const evaderTarget = new YUKA.Vector3();
+const seekBehavior = new YUKA.SeekBehavior(evaderTarget);
+evader.steering.add(seekBehavior);
+
+const time = new YUKA.Time();
+
+
   // Animation function to rotate the model
   function animate() {
-    requestAnimationFrame(animate);
+    const delta = time.update().getDelta();
+   YUKA.entityManager.update(delta);
 
-    // Rotate the model
-    rocket.rotation.y += 0.01; // Adjust the rotation speed as needed
+    const elapsed = time.getElapsed();
+    evaderTarget.x = Math.cos(elapsed) * Math.sin(elapsed * 0.2) * 6;
+    evaderTarget.z = Math.sin(elapsed * 0.8) * 6;
 
     renderer.render(scene, camera);
+    requestAnimationFrame(animate);
   }
 
   animate();
 }, undefined, function (error) {
   console.error("The model failed to load:", error);
 });
-
-
 
 // Torus
 const geometry = new THREE.TorusGeometry(6, 0.87, 30, 1000, );
@@ -77,16 +110,15 @@ torus3.position.set(3.0,0,-4)
 scene.add(torus);
 scene.add(torus2);
 scene.add(torus3);
-// Lights
 
+// Lights
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
-
-//adding stars/dotes in the background
+// Stars
 function addStar() {
   const geometry = new THREE.IcosahedronGeometry(0.2, 0);
   //dark or navy blue stars 
@@ -154,17 +186,26 @@ function addStar() {
   
 }
 Array(9000).fill().forEach(addStar);
-// Background
 
+
+// Background
 const spaceTexture = new THREE.TextureLoader();
 scene.background = spaceTexture;
 
 // Avatar
+const sheelTexture = new THREE.TextureLoader().load('sheel.png'); //Adding a picture to the side of the box
+const sheelTexture2 = new THREE.TextureLoader().load('sheel2.png'); //Adding a picture to another side of the box
+const sheelTexture3 = new THREE.TextureLoader().load('sheel3.png'); //Adding a picture to another side of the box
 
-const sheelTexture = new THREE.TextureLoader().load('sheel.png');
-// const sheelTec = new THREE.Texture(sheelTexture                      //this is if i want to add more picture to the box, which i will do later
-
-const sheel = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map:sheelTexture}));
+const cubematerial = [
+  new THREE.MeshBasicMaterial({map: sheelTexture}), //this one is upside down
+  new THREE.MeshBasicMaterial({map: sheelTexture}),
+  new THREE.MeshBasicMaterial({map: sheelTexture2}),
+  new THREE.MeshBasicMaterial({map: sheelTexture2}),
+  new THREE.MeshBasicMaterial({map: sheelTexture3}),
+  new THREE.MeshBasicMaterial({map: sheelTexture3})
+]
+const sheel = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), cubematerial);
 
 scene.add(sheel);
 
@@ -208,7 +249,6 @@ sun.position.y = -60
 
 
 // Scroll Animation
-
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
   earth.rotation.x += 0.05;
@@ -278,7 +318,7 @@ const loop = () => {
   loop();
 
 
-//resize the scene when the user make the screen bigger and smaller
+// Resize the scene
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
@@ -293,4 +333,3 @@ window.addEventListener('mousemove', (event) => {
   modelFollowsCursor = true; // Start following the cursor when mouse movement is detected
 }); 
   
-

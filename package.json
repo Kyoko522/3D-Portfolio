@@ -12,6 +12,7 @@
     "vite": "^4.3.9"
   },
   "dependencies": {
+    "parcel": "^2.9.2",
     "three": "^0.153.0",
     "yuka": "^0.7.8"
   }

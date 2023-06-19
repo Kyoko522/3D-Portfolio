@@ -5,7 +5,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { Clock, Vector3 } from 'three';
 import * as YUKA from 'yuka';
 // import * as DAT from 'https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.module.js'
-//seeing if this get updated in github.com
+
 const clock = new Clock();
 
 // Setup

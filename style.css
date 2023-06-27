@@ -1,11 +1,13 @@
 @import url("https://use.typekit.net/jmk3xov.css");
 
+/* This is for the three.js affects where all the shapes are located */
 canvas {
   position: fixed;
   top: 0;
   left: 0;
 }
 
+/* the whole screen */
 html{
   scroll-behavior: smooth;
   scroll-padding-top: 150px;
@@ -148,26 +150,25 @@ canvas {
     color: #f9004d;
     transition: .4s;
   }
-.first-project,.second-project, .third-project {
-
-width: 300px;
-height: 320px;
-background-repeat: no-repeat;
-background-size: cover;
-box-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
-}
 
 .box-container {
   display: flex;
-  justify-content: space-between;}
+  justify-content: space-between;
+  background-color: #f9004d;
+  
+}
 
-
-.first-project{
-    background-image: url(../images/)
+.box-1, .box-2, .box-3, .box-4{
+  width: 300px;
+  height: 320px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
 }
 
 
-.first-project span,.second-project span,.third-project span{
+.box-1 span,.box-2 span,.box-3 span, .box-4 span{
 width: 40px;
 height: 40px;
 border-radius: 50%;
@@ -184,4 +185,66 @@ top: 0;
 right: 0;
 }
 
-/* .first-project p:nth-child(1),  */
+
+
+/* Services Section */
+#services .services {
+	flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#services .service-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#services .service-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+#services .service-item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#services .service-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+#services .service-bottom .icon {
+	height: 80px;
+	width: 80px;
+	margin-bottom: 20px;
+}
+#services .service-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+#services .service-item p {
+	color: white;
+	text-align: left;
+}
+/* End Services Section */

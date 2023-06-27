@@ -45,11 +45,11 @@ model.load('model.gltf', function (gltf) {
     readerComponent.matrix.copy(entity.worldMatrix);
   }
 
-  const pursuer = new YUKA.Vehicle();
-  pursuer.setRenderComponent(rocket, sync);
-  YUKA.EntityManager.add(pursuer);
-  pursuer.position.set(-10, 0, -3);
-  pursuer.maxSpeed = 3;
+  // const pursuer = new YUKA.Vehicle();
+  // pursuer.setRenderComponent(rocket, sync);
+  // YUKA.EntityManager.add(pursuer);
+  // pursuer.position.set(-10, 0, -3);
+  // pursuer.maxSpeed = 3;
 
   const evaderGeometry = new THREE.SphereBufferGeometry(0.01);
 const evaderMaterial = new THREE.MeshPhongMaterial({color: 0xFFEA00});

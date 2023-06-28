@@ -185,5 +185,17 @@ top: 0;
 right: 0;
 }
 
-/* trying to see if this works from old portfolio */
+.service-container{
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 4rem;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+}
 
+.service-item {
+  max-width: 300px;
+}
+/* trying to see if this works from old portfolio */

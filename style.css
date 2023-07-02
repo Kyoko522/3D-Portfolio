@@ -1,6 +1,12 @@
 @import url("https://use.typekit.net/jmk3xov.css");
 
 /* This is for the three.js affects where all the shapes are located */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+} 
+
 canvas {
   position: fixed;
   top: 0;
@@ -22,6 +28,14 @@ html{
   font-style: normal;
 }
 
+p{
+  padding-bottom: 1rem;
+}
+
+li{
+  margin-left: 2rem;
+  padding-bottom: 1rem;
+}
 
 main {
   width: 100vw;
@@ -63,6 +77,8 @@ canvas {
     font-size: 1.25rem;
     line-height: 1.5;
     margin-bottom: var(--spacing);
+    min-width: 350px;
+    max-width: 700px;
   }
 
   .project-list {
@@ -95,7 +111,7 @@ canvas {
   }
 
   .left {
-    grid-column: 6 / 12;
+    grid-column: 7.5 / 12;
   }
 
   .github-link {
@@ -158,71 +174,172 @@ canvas {
   
 }
 
-.box-1, .box-2, .box-3, .box-4{
-  width: 300px;
-  height: 320px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
-  padding: 2rem;
+h2{
+  padding-bottom: 1rem;
 }
 
 
-.box-1 span,.box-2 span,.box-3 span, .box-4 span{
-width: 40px;
-height: 40px;
-border-radius: 50%;
-background-color: #ffff;
-display: flex;
-justify-content: center;
-align-items: center;
-font-family: calibri;
-font-weight: bold;
-padding-left: 2rem;
-padding-right: 2rem;
-position: absolute;
-top: 0;
-right: 0;
-}
 
-.service-container{
-  display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-gap: 4rem;
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    margin-bottom: 6rem;
-}
+/* @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
 
-.service-item {
-  max-width: 300px;
-}
 
-#services .service-bottom {
+
+/* projects Section */
+#projects .projects {
+	flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#projects .project-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#projects .project-bottom {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
 	margin-top: 50px;
 }
-
-#services .service-bottom .icon {
+#projects .project-item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+  min-width: 300px;
+  min-height: 300px;
+}
+#projects .project-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #5f0a87 0%, #a4508b 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+#projects .project-bottom .icon {
 	height: 80px;
 	width: 80px;
 	margin-bottom: 20px;
 }
-
-
-
-#services .service-bottom .service-item {
-  flex-basis: 45%;
-  margin: 2.5%;
+#projects .project-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
 }
+#projects .project-item p {
+	color: white;
+	text-align: left;
+}
+/* End projects Section */
 
+
+
+
+/* Keyframes */
+@keyframes hamburger_puls {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+}
+@keyframes text_reveal_box {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes text_reveal {
+	100% {
+		color: white;
+	}
+}
+@keyframes text_reveal_name {
+	100% {
+		color: crimson;
+		font-weight: 500;
+	}
+}
+/* End Keyframes */
+
+/* Media Query For Tablet */
+@media only screen and (min-width: 768px) {
+	.cta {
+		font-size: 2.5rem;
+		padding: 20px 60px;
+	}
+	h1.section-title {
+		font-size: 6rem;
+	}
+
+	/* Hero */
+	#hero h1 {
+		font-size: 7rem;
+	}
+	/* End Hero */
+
+	/* projects Section */
+	#projects .project-bottom .project-item {
+		flex-basis: 45%;
+		margin: 2.5%;
+	}
+	/* End projects Section */
+
+	
+
+}
+/* End Media Query For Tablet */
+
+/* Media Query For Desktop */
 @media only screen and (min-width: 1200px) {
-#services .service-bottom .service-item {
-  flex-basis: 22%;
-  margin: 1.5%;
-}}
-/* trying to see if this works from old portfolio */
+	/* header */
+	#header .hamburger {
+		display: none;
+	}
+	#header .nav-list ul {
+		position: initial;
+		display: block;
+		height: auto;
+		width: fit-content;
+		background-color: transparent;
+	}
+	#header .nav-list ul li {
+		display: inline-block;
+	}
+	#header .nav-list ul li a {
+		font-size: 1.8rem;
+	}
+	#header .nav-list ul a:after {
+		display: none;
+	}
+	/* End header */
+
+	#projects .project-bottom .project-item {
+		flex-basis: 22%;
+		margin: 1.5%;
+	}
+}
+/* End  Media Query For Desktop */

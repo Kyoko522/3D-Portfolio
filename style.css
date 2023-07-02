@@ -111,7 +111,27 @@ canvas {
   }
 
   .left {
-    grid-column: 7.5 / 12;
+    grid-column: 7 / 12;
+  }
+
+  .blue{
+    color: 	#04d9ff;
+  }
+
+  .purple{
+    color: #bc13fe;
+  }
+
+  .green{
+    color: #34fe4f;
+  }
+
+  .yellow{
+    color: #FFFF00;
+  }
+
+  .orange {
+    color: #ff6700;
   }
 
   .github-link {
@@ -131,7 +151,7 @@ canvas {
   }
 
   #git-button:hover{
-    background-color: #f9004d;
+    background-color: #a4508b;
   }
   
   nav {

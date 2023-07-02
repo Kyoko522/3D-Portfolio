@@ -198,4 +198,31 @@ right: 0;
 .service-item {
   max-width: 300px;
 }
+
+#services .service-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+
+#services .service-bottom .icon {
+	height: 80px;
+	width: 80px;
+	margin-bottom: 20px;
+}
+
+
+
+#services .service-bottom .service-item {
+  flex-basis: 45%;
+  margin: 2.5%;
+}
+
+@media only screen and (min-width: 1200px) {
+#services .service-bottom .service-item {
+  flex-basis: 22%;
+  margin: 1.5%;
+}}
 /* trying to see if this works from old portfolio */

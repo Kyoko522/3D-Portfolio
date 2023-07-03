@@ -232,7 +232,7 @@ scene.add(earth);
 
 earth.position.z = 80;
 earth.position.x = -10;
-earth.position.y = 1.5;
+earth.position.y = 1.55;
 
 sheel.position.z = -5;
 sheel.position.x = 2;
@@ -259,9 +259,9 @@ sun.position.y = -60
 // Scroll Animation
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  earth.rotation.x += 0.05;
-  earth.rotation.y += 0.075;
-  earth.rotation.z += 0.05;
+  // earth.rotation.x += 1.5;
+  // earth.rotation.y += 0.075;
+  // earth.rotation.z += 0.05;
 
   sheel.rotation.y += 0.05;
   
@@ -310,7 +310,8 @@ function animate() {
     torus3.rotation.y += 0.01;
     torus3.rotation.z -= 0.02;
   
-    earth.rotation.x += 0.005;
+    earth.rotation.y += 0.05;
+    earth.rotation.x += 0.001;
   
     sheel.rotation.y += 0.05;
     sheel.rotation.z += 0.02;

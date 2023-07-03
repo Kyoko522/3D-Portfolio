@@ -134,6 +134,18 @@ canvas {
     color: #ff6700;
   }
 
+  .black{
+    color: black;
+  }
+
+  .red{
+    color: crimson
+  }
+
+  .pink{
+    color: #FF10F0;
+  }
+
   .github-link {
     display: inline-block;
     padding: 10px 20px;
@@ -153,6 +165,11 @@ canvas {
   #git-button:hover{
     background-color: #a4508b;
   }
+
+.button-group{
+  display: flex;
+  gap: 1rem;
+}
   
   nav {
     display: flex;

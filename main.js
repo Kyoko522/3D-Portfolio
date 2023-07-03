@@ -134,7 +134,9 @@ function addStar() {
   //yellow stars
   const material6 = new THREE.MeshStandardMaterial({ color: "#d1fe49" });
   //orange stars
-  const material7 =  new THREE.MeshStandardMaterial({ color: "#FF5F1F"});
+  const material7 = new THREE.MeshStandardMaterial({ color: "#FF5F1F"});
+  //red stars
+  const material8 = new THREE.MeshStandardMaterial({ color: "#FF3131"});
   
   const star = new THREE.Mesh(geometry, material);
   const star2 = new THREE.Mesh(geometry, material2);
@@ -143,35 +145,39 @@ function addStar() {
   const star5 = new THREE.Mesh(geometry, material5);
   const star6 = new THREE.Mesh(geometry, material6);
   const star7 = new THREE.Mesh(geometry, material7);
+  const star8 = new THREE.Mesh(geometry, material8);
 
   const [x1, y1, z1] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(300));
+    .map(() => THREE.MathUtils.randFloatSpread(350));
 
   const [x2, y2, z2] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(300));
+    .map(() => THREE.MathUtils.randFloatSpread(350));
 
   const [x3, y3, z3] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(300));
+    .map(() => THREE.MathUtils.randFloatSpread(350));
 
   const [x4, y4, z4] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(300));
+    .map(() => THREE.MathUtils.randFloatSpread(350));
   
   const [x5, y5, z5] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(300));
+    .map(() => THREE.MathUtils.randFloatSpread(350));
   
   const [x6, y6, z6] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(300));
+    .map(() => THREE.MathUtils.randFloatSpread(350));
 
   const [x7, y7, z7] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(300));
+    .map(() => THREE.MathUtils.randFloatSpread(350));
 
+  const [x8, y8, z8] = Array(3)
+    .fill()
+    .map(() => THREE.MathUtils.randFloatSpread(350));
   
 
   star.position.set(x1, y1, z1);
@@ -181,8 +187,9 @@ function addStar() {
   star5.position.set(x5, y5, z5);
   star6.position.set(x6, y6, z6);
   star7.position.set(x7, y7, z7);
+  star8.position.set(x8, y8, z8);
 
-  scene.add(star, star2, star3, star4, star5, star6, star7);
+  scene.add(star, star2, star3, star4, star5, star6, star7,star8);
   
 }
 Array(9000).fill().forEach(addStar);
@@ -223,8 +230,9 @@ const earth = new THREE.Mesh(
 
 scene.add(earth);
 
-earth.position.z = -10;
-earth.position.x = -80;
+earth.position.z = 80;
+earth.position.x = -10;
+earth.position.y = 1.5;
 
 sheel.position.z = -5;
 sheel.position.x = 2;

@@ -201,16 +201,9 @@ canvas {
   }
   
   nav ul li a:hover {
-    color: #f9004d;
+    color: #bc13fe;
     transition: .4s;
   }
-
-.box-container {
-  display: flex;
-  justify-content: space-between;
-  background-color: #f9004d;
-  
-}
 
 h2{
   padding-bottom: 1rem;
@@ -256,7 +249,7 @@ h2{
 	z-index: 1;
 	overflow: hidden;
   min-width: 300px;
-  min-height: 300px;
+  min-height: 350px;
 }
 #projects .project-item::after {
 	content: '';
@@ -276,12 +269,13 @@ h2{
 }
 #projects .project-item h2 {
 	font-size: 2rem;
-	color: white;
+  font-weight: bold;
+	color: black;
 	margin-bottom: 10px;
 	text-transform: uppercase;
 }
 #projects .project-item p {
-	color: white;
+	color: black;
 	text-align: left;
 }
 /* End projects Section */

@@ -41,7 +41,7 @@ model.load('model.gltf', function (gltf) {
   rocket.rotation.y = Math.PI / 2; // Adjust the angle as needed
 
   //rocket tracking
-  function sync (entity, renderComponent){
+  function sync(entity, renderComponent) {
     readerComponent.matrix.copy(entity.worldMatrix);
   }
 
@@ -52,31 +52,31 @@ model.load('model.gltf', function (gltf) {
   // pursuer.maxSpeed = 3;
 
   const evaderGeometry = new THREE.SphereBufferGeometry(0.01);
-const evaderMaterial = new THREE.MeshPhongMaterial({color: 0xFFEA00});
-const evaderMesh = new THREE.Mesh(evaderGeometry, evaderMaterial);
-evaderMesh.matrixAutoUpdate = false;
-scene.add(evaderMesh);
+  const evaderMaterial = new THREE.MeshPhongMaterial({ color: 0xFFEA00 });
+  const evaderMesh = new THREE.Mesh(evaderGeometry, evaderMaterial);
+  evaderMesh.matrixAutoUpdate = false;
+  scene.add(evaderMesh);
 
-const evader = new YUKA.Vehicle();
-evader.setRenderComponent(evaderMesh, sync);
-entityManager.add(evader);
-evader.position.set(2, 0, -3);
-evader.maxSpeed = 2;
+  const evader = new YUKA.Vehicle();
+  evader.setRenderComponent(evaderMesh, sync);
+  entityManager.add(evader);
+  evader.position.set(2, 0, -3);
+  evader.maxSpeed = 2;
 
-const pursuitBehavior = new YUKA.PursuitBehavior(evader, 5);
-pursuer.steering.add(pursuitBehavior);
+  const pursuitBehavior = new YUKA.PursuitBehavior(evader, 5);
+  pursuer.steering.add(pursuitBehavior);
 
-const evaderTarget = new YUKA.Vector3();
-const seekBehavior = new YUKA.SeekBehavior(evaderTarget);
-evader.steering.add(seekBehavior);
+  const evaderTarget = new YUKA.Vector3();
+  const seekBehavior = new YUKA.SeekBehavior(evaderTarget);
+  evader.steering.add(seekBehavior);
 
-const time = new YUKA.Time();
+  const time = new YUKA.Time();
 
 
   // Animation function to rotate the model
   function animate() {
     const delta = time.update().getDelta();
-   YUKA.entityManager.update(delta);
+    YUKA.entityManager.update(delta);
 
     const elapsed = time.getElapsed();
     evaderTarget.x = Math.cos(elapsed) * Math.sin(elapsed * 0.2) * 6;
@@ -92,20 +92,20 @@ const time = new YUKA.Time();
 });
 
 // Torus
-const geometry = new THREE.TorusGeometry(6, 0.87, 30, 1000, );
+const geometry = new THREE.TorusGeometry(6, 0.87, 30, 1000,);
 const material = new THREE.MeshStandardMaterial({ color: "#A020F0" });
 const torus = new THREE.Mesh(geometry, material);
-torus.position.set(2.4,0,-5)
+torus.position.set(2.4, 0, -5)
 
-const geometry2 = new THREE.TorusGeometry(12, 1.6, 30, 1000 ,);
-const material2 = new THREE.MeshStandardMaterial({ color:"#34fe4f"})
+const geometry2 = new THREE.TorusGeometry(12, 1.6, 30, 1000,);
+const material2 = new THREE.MeshStandardMaterial({ color: "#34fe4f" })
 const torus2 = new THREE.Mesh(geometry2, material2);
-torus2.position.set(2.4,0,-4)
+torus2.position.set(2.4, 0, -4)
 
-const geometry3 = new THREE.TorusGeometry(20, 3.6, 30, 1000 ,);
-const material3 = new THREE.MeshStandardMaterial({ color:"#d1fe49"})
+const geometry3 = new THREE.TorusGeometry(20, 3.6, 30, 1000,);
+const material3 = new THREE.MeshStandardMaterial({ color: "#d1fe49" })
 const torus3 = new THREE.Mesh(geometry3, material3);
-torus3.position.set(3.0,0,-4)
+torus3.position.set(3.0, 0, -4)
 
 scene.add(torus);
 scene.add(torus2);
@@ -124,20 +124,20 @@ function addStar() {
   //dark or navy blue stars 
   const material2 = new THREE.MeshStandardMaterial({ color: "#014760" });
   //pink stars
-  const material  = new THREE.MeshStandardMaterial({ color: "#e200f7" });
+  const material = new THREE.MeshStandardMaterial({ color: "#e200f7" });
   //bright blue stars
   const material3 = new THREE.MeshStandardMaterial({ color: "#25f5fc" });
-//white stars
+  //white stars
   const material4 = new THREE.MeshStandardMaterial({ color: "#ffffff" });
-//green stars
+  //green stars
   const material5 = new THREE.MeshStandardMaterial({ color: "#34fe4f" });
   //yellow stars
   const material6 = new THREE.MeshStandardMaterial({ color: "#d1fe49" });
   //orange stars
-  const material7 = new THREE.MeshStandardMaterial({ color: "#FF5F1F"});
+  const material7 = new THREE.MeshStandardMaterial({ color: "#FF5F1F" });
   //red stars
-  const material8 = new THREE.MeshStandardMaterial({ color: "#FF3131"});
-  
+  const material8 = new THREE.MeshStandardMaterial({ color: "#FF3131" });
+
   const star = new THREE.Mesh(geometry, material);
   const star2 = new THREE.Mesh(geometry, material2);
   const star3 = new THREE.Mesh(geometry, material3);
@@ -162,11 +162,11 @@ function addStar() {
   const [x4, y4, z4] = Array(3)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(350));
-  
+
   const [x5, y5, z5] = Array(3)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(350));
-  
+
   const [x6, y6, z6] = Array(3)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(350));
@@ -178,7 +178,7 @@ function addStar() {
   const [x8, y8, z8] = Array(3)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(350));
-  
+
 
   star.position.set(x1, y1, z1);
   star2.position.set(x2, y2, z2);
@@ -189,8 +189,8 @@ function addStar() {
   star7.position.set(x7, y7, z7);
   star8.position.set(x8, y8, z8);
 
-  scene.add(star, star2, star3, star4, star5, star6, star7,star8);
-  
+  scene.add(star, star2, star3, star4, star5, star6, star7, star8);
+
 }
 Array(9000).fill().forEach(addStar);
 
@@ -205,12 +205,12 @@ const sheelTexture2 = new THREE.TextureLoader().load('sheel2.png'); //Adding a p
 const sheelTexture3 = new THREE.TextureLoader().load('sheel3.png'); //Adding a picture to another side of the box
 
 const cubematerial = [
-  new THREE.MeshBasicMaterial({map: sheelTexture}), //this one is upside down
-  new THREE.MeshBasicMaterial({map: sheelTexture}),
-  new THREE.MeshBasicMaterial({map: sheelTexture2}),
-  new THREE.MeshBasicMaterial({map: sheelTexture2}),
-  new THREE.MeshBasicMaterial({map: sheelTexture3}),
-  new THREE.MeshBasicMaterial({map: sheelTexture3})
+  new THREE.MeshBasicMaterial({ map: sheelTexture }), //this one is upside down
+  new THREE.MeshBasicMaterial({ map: sheelTexture }),
+  new THREE.MeshBasicMaterial({ map: sheelTexture2 }),
+  new THREE.MeshBasicMaterial({ map: sheelTexture2 }),
+  new THREE.MeshBasicMaterial({ map: sheelTexture3 }),
+  new THREE.MeshBasicMaterial({ map: sheelTexture3 })
 ]
 const sheel = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), cubematerial);
 
@@ -264,7 +264,7 @@ function moveCamera() {
   // earth.rotation.z += 0.05;
 
   sheel.rotation.y += 0.05;
-  
+
   sheel.rotation.z += 0.05;
 
   camera.position.z = t * -0.04;
@@ -277,54 +277,55 @@ moveCamera();
 
 // Animation Loop
 function animate() {
-    requestAnimationFrame(animate);
-  
-    if (modelFollowsCursor) {
-      elapsedTime += clock.getDelta() * 1000; // Calculate elapsed time
-  
-      if (elapsedTime > delayTimer) {
-        const mouseNormalizedX = (mouseX / window.innerWidth) * 2 - 1;
-        const mouseNormalizedY = -(mouseY / window.innerHeight) * 2 + 1;
-  
-        // Convert mouse position to three.js world coordinates
-        const vector = new THREE.Vector3(
-          mouseNormalizedX,
-          mouseNormalizedY,
-          0.5
-        ).unproject(camera);
-  
-        }
-        elapsedTime = 0; // Reset the elapsed time
-      }
-    
-  
-    torus.rotation.x -= 0.11865367;
-    torus.rotation.y -= 0.119367;
-    torus.rotation.z -= 0.4354678;
-  
-    torus2.rotation.x += 0.08312087;
-    torus2.rotation.y += 0.082093;
-    torus2.rotation.z += 0.073049856;
-  
-    torus3.rotation.x -= 0.02;
-    torus3.rotation.y += 0.01;
-    torus3.rotation.z -= 0.02;
-  
-    earth.rotation.y += 0.05;
-    earth.rotation.x += 0.001;
-  
-    sheel.rotation.y += 0.05;
-    sheel.rotation.z += 0.02;
-  
-    renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+
+  if (modelFollowsCursor) {
+    elapsedTime += clock.getDelta() * 1000; // Calculate elapsed time
+
+    if (elapsedTime > delayTimer) {
+      const mouseNormalizedX = (mouseX / window.innerWidth) * 2 - 1;
+      const mouseNormalizedY = -(mouseY / window.innerHeight) * 2 + 1;
+
+      // Convert mouse position to three.js world coordinates
+      const vector = new THREE.Vector3(
+        mouseNormalizedX,
+        mouseNormalizedY,
+        0.5
+      ).unproject(camera);
+
+    }
+    elapsedTime = 0; // Reset the elapsed time
   }
-  
+
+
+  torus.rotation.x -= 0.11865367;
+  torus.rotation.y -= 0.119367;
+  torus.rotation.z -= 0.4354678;
+
+  torus2.rotation.x += 0.08312087;
+  torus2.rotation.y += 0.082093;
+  torus2.rotation.z += 0.073049856;
+
+  torus3.rotation.x -= 0.02;
+  torus3.rotation.y += 0.01;
+  torus3.rotation.z -= 0.02;
+
+  earth.rotation.y += 0.05;
+  earth.rotation.x += 0.001;
+
+  sheel.rotation.y += 0.05;
+  sheel.rotation.z += 0.02;
+
+  renderer.render(scene, camera);
+}
+
 
 
 const loop = () => {
   renderer.render(scene, camera);
-  window.requestAnimationFrame(loop)}
-  loop();
+  window.requestAnimationFrame(loop)
+}
+loop();
 
 
 // Resize the scene
@@ -340,5 +341,5 @@ window.addEventListener('mousemove', (event) => {
   mouseX = event.clientX;
   mouseY = event.clientY;
   modelFollowsCursor = true; // Start following the cursor when mouse movement is detected
-}); 
-  
+});
+

@@ -40,13 +40,22 @@ anime_model.load('yamato.gltf', function (gltf) {
 
   // Set initial rotation
   //anime.rotation.y = Math.PI / 2; // Adjust the angle as needed
-  anime.scale.set(0.05, 0.05, 0.05); // Set the scale to half of its original size
+  anime.scale.set(0.07, 0.07, 0.07); // Set the scale to half of its original size
+  anime.position.set(-29.98,-27.4,12)
 
 
   //anime tracking
   function sync(entity, renderComponent) {
     readerComponent.matrix.copy(entity.worldMatrix);
   }
+
+    // Animation loop for rotation
+    function animate() {
+      requestAnimationFrame(animate);
+      anime.rotation.y += 0.05; // Adjust the rotation speed as needed
+    }
+  
+    animate(); // Start the animation loop
 
 }, undefined, function (error) {
   console.error("The model failed to load:", error);
@@ -281,6 +290,8 @@ sun.position.y = -60
 
 // Scroll Animation
 function moveCamera() {
+
+  console.log(camera.position)
   const t = document.body.getBoundingClientRect().top;
   // earth.rotation.x += 1.5;
   // earth.rotation.y += 0.075;

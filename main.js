@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { Clock, Vector3 } from 'three';
 import * as YUKA from 'yuka';
+// import { scale } from 'math/dist/declarations/src/vector2';
 // import * as DAT from 'https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.module.js'
 
 const clock = new Clock();
@@ -30,10 +31,32 @@ camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
-//Rocket
-const model = new GLTFLoader();
+//Yamato
+const anime_model = new GLTFLoader();
 
-model.load('model.gltf', function (gltf) {
+anime_model.load('yamato.gltf', function (gltf) {
+  const anime = gltf.scene;
+  scene.add(anime);
+
+  // Set initial rotation
+  //anime.rotation.y = Math.PI / 2; // Adjust the angle as needed
+  anime.scale.set(0.05, 0.05, 0.05); // Set the scale to half of its original size
+
+
+  //anime tracking
+  function sync(entity, renderComponent) {
+    readerComponent.matrix.copy(entity.worldMatrix);
+  }
+
+}, undefined, function (error) {
+  console.error("The model failed to load:", error);
+});
+
+
+//Rocket
+const rocket_model = new GLTFLoader();
+
+rocket_model.load('model.gltf', function (gltf) {
   const rocket = gltf.scene;
   scene.add(rocket);
 
@@ -51,42 +74,42 @@ model.load('model.gltf', function (gltf) {
   // pursuer.position.set(-10, 0, -3);
   // pursuer.maxSpeed = 3;
 
-  const evaderGeometry = new THREE.SphereBufferGeometry(0.01);
-  const evaderMaterial = new THREE.MeshPhongMaterial({ color: 0xFFEA00 });
-  const evaderMesh = new THREE.Mesh(evaderGeometry, evaderMaterial);
-  evaderMesh.matrixAutoUpdate = false;
-  scene.add(evaderMesh);
+  // const evaderGeometry = new THREE.SphereBufferGeometry(0.01);
+  // const evaderMaterial = new THREE.MeshPhongMaterial({ color: 0xFFEA00 });
+  // const evaderMesh = new THREE.Mesh(evaderGeometry, evaderMaterial);
+  // evaderMesh.matrixAutoUpdate = false;
+  // scene.add(evaderMesh);
 
-  const evader = new YUKA.Vehicle();
-  evader.setRenderComponent(evaderMesh, sync);
-  entityManager.add(evader);
-  evader.position.set(2, 0, -3);
-  evader.maxSpeed = 2;
+  // const evader = new YUKA.Vehicle();
+  // evader.setRenderComponent(evaderMesh, sync);
+  // entityManager.add(evader);
+  // evader.position.set(2, 0, -3);
+  // evader.maxSpeed = 2;
 
-  const pursuitBehavior = new YUKA.PursuitBehavior(evader, 5);
-  pursuer.steering.add(pursuitBehavior);
+  // const pursuitBehavior = new YUKA.PursuitBehavior(evader, 5);
+  // pursuer.steering.add(pursuitBehavior);
 
-  const evaderTarget = new YUKA.Vector3();
-  const seekBehavior = new YUKA.SeekBehavior(evaderTarget);
-  evader.steering.add(seekBehavior);
+  // const evaderTarget = new YUKA.Vector3();
+  // const seekBehavior = new YUKA.SeekBehavior(evaderTarget);
+  // evader.steering.add(seekBehavior);
 
-  const time = new YUKA.Time();
+  // const time = new YUKA.Time();
 
 
-  // Animation function to rotate the model
-  function animate() {
-    const delta = time.update().getDelta();
-    YUKA.entityManager.update(delta);
+  // // Animation function to rotate the model
+  // function animate() {
+  //   const delta = time.update().getDelta();
+  //   YUKA.entityManager.update(delta);
 
-    const elapsed = time.getElapsed();
-    evaderTarget.x = Math.cos(elapsed) * Math.sin(elapsed * 0.2) * 6;
-    evaderTarget.z = Math.sin(elapsed * 0.8) * 6;
+  //   const elapsed = time.getElapsed();
+  //   evaderTarget.x = Math.cos(elapsed) * Math.sin(elapsed * 0.2) * 6;
+  //   evaderTarget.z = Math.sin(elapsed * 0.8) * 6;
 
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-  }
+  //   renderer.render(scene, camera);
+  //   requestAnimationFrame(animate);
+  // }
 
-  animate();
+  // animate();
 }, undefined, function (error) {
   console.error("The model failed to load:", error);
 });

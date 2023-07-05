@@ -31,65 +31,43 @@ camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
-//Yamato
-const anime_model = new GLTFLoader();
+function loadModelWithAnimation(loader, modelPath, position, scale, rotationSpeed) {
+  loader.load(modelPath, function (gltf) {
+    const model = gltf.scene;
+    scene.add(model);
 
-anime_model.load('yamato.gltf', function (gltf) {
-  const anime = gltf.scene;
-  scene.add(anime);
+    model.scale.set(scale, scale, scale);
+    model.position.copy(position);
 
-  // Set initial rotation
-  //anime.rotation.y = Math.PI / 2; // Adjust the angle as needed
-  anime.scale.set(0.07, 0.07, 0.07); // Set the scale to half of its original size
-  anime.position.set(-29.98,-27.4,12)
-
-
-  //anime tracking
-  function sync(entity, renderComponent) {
-    readerComponent.matrix.copy(entity.worldMatrix);
-  }
-
-    // Animation loop for rotation
     function animate() {
       requestAnimationFrame(animate);
-      anime.rotation.y += 0.05; // Adjust the rotation speed as needed
+      model.rotation.y += rotationSpeed;
     }
-  
-    animate(); // Start the animation loop
 
-}, undefined, function (error) {
-  console.error("The model failed to load:", error);
-});
+    animate();
+  }, undefined, function (error) {
+    console.error("The model failed to load:", error);
+  });
+}
 
-//sheild hero anime
+const anime_model = new GLTFLoader();
 const anime_model2 = new GLTFLoader();
 
-anime_model2.load('anime2.gltf', function (gltf) {
-  const anime2 = gltf.scene;
-  scene.add(anime2);
+loadModelWithAnimation(
+  anime_model,
+  'yamato.gltf',
+  new THREE.Vector3(-29.98, -27.4, 12),
+  0.07,
+  0.05
+);
 
-  // Set initial rotation
-  //anime.rotation.y = Math.PI / 2; // Adjust the angle as needed
-  anime2.scale.set(0.068, 0.068, 0.068); // Set the scale to half of its original size
-  anime2.position.set(-39.98,-29.4,14)
-
-
-  //anime tracking
-  function sync(entity, renderComponent) {
-    readerComponent.matrix.copy(entity.worldMatrix);
-  }
-
-    // Animation loop for rotation
-    function animate() {
-      requestAnimationFrame(animate);
-      anime2.rotation.y -= 0.05; // Adjust the rotation speed as needed
-    }
-  
-    animate(); // Start the animation loop
-
-}, undefined, function (error) {
-  console.error("The model failed to load:", error);
-});
+loadModelWithAnimation(
+  anime_model2,
+  'anime2.gltf',
+  new THREE.Vector3(-39.98, -29.4, 14),
+  0.068,
+  -0.05
+);
 
 
 //Rocket

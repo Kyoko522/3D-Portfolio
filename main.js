@@ -61,6 +61,36 @@ anime_model.load('yamato.gltf', function (gltf) {
   console.error("The model failed to load:", error);
 });
 
+//sheild hero anime
+const anime_model2 = new GLTFLoader();
+
+anime_model2.load('anime2.gltf', function (gltf) {
+  const anime2 = gltf.scene;
+  scene.add(anime2);
+
+  // Set initial rotation
+  //anime.rotation.y = Math.PI / 2; // Adjust the angle as needed
+  anime2.scale.set(0.068, 0.068, 0.068); // Set the scale to half of its original size
+  anime2.position.set(-39.98,-29.4,14)
+
+
+  //anime tracking
+  function sync(entity, renderComponent) {
+    readerComponent.matrix.copy(entity.worldMatrix);
+  }
+
+    // Animation loop for rotation
+    function animate() {
+      requestAnimationFrame(animate);
+      anime2.rotation.y -= 0.05; // Adjust the rotation speed as needed
+    }
+  
+    animate(); // Start the animation loop
+
+}, undefined, function (error) {
+  console.error("The model failed to load:", error);
+});
+
 
 //Rocket
 const rocket_model = new GLTFLoader();

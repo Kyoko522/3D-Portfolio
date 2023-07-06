@@ -52,6 +52,7 @@ function loadModelWithAnimation(loader, modelPath, position, scale, rotationSpee
 
 const anime_model = new GLTFLoader();
 const anime_model2 = new GLTFLoader();
+const chopper = new GLTFLoader();
 
 loadModelWithAnimation(
   anime_model,
@@ -67,6 +68,14 @@ loadModelWithAnimation(
   new THREE.Vector3(-39.98, -29.4, 14),
   0.068,
   -0.05
+);
+
+loadModelWithAnimation(
+  chopper,
+  'chopper.gltf',
+  new THREE.Vector3(-52.98, -26.4, 16),
+  0.068,
+  0.05
 );
 
 
@@ -133,17 +142,20 @@ rocket_model.load('model.gltf', function (gltf) {
 
 // Torus
 const geometry = new THREE.TorusGeometry(6, 0.87, 30, 1000,);
-const material = new THREE.MeshStandardMaterial({ color: "#A020F0" });
+const material = new THREE.MeshStandardMaterial({ color: "#000000" });
+// const material = new THREE.MeshStandardMaterial({ color: "#A020F0" });
 const torus = new THREE.Mesh(geometry, material);
 torus.position.set(2.4, 0, -5)
 
 const geometry2 = new THREE.TorusGeometry(12, 1.6, 30, 1000,);
-const material2 = new THREE.MeshStandardMaterial({ color: "#34fe4f" })
+const material2 = new THREE.MeshStandardMaterial({ color: "#000000" })
+// const material2 = new THREE.MeshStandardMaterial({ color: "#34fe4f" })
 const torus2 = new THREE.Mesh(geometry2, material2);
 torus2.position.set(2.4, 0, -4)
 
-const geometry3 = new THREE.TorusGeometry(20, 3.6, 30, 1000,);
-const material3 = new THREE.MeshStandardMaterial({ color: "#d1fe49" })
+const geometry3 = new THREE.TorusGeometry(20, 2.6, 30, 1000,);
+const material3 = new THREE.MeshStandardMaterial({ color: "#000000" })
+// const material3 = new THREE.MeshStandardMaterial({ color: "#d1fe49" })
 const torus3 = new THREE.Mesh(geometry3, material3);
 torus3.position.set(3.0, 0, -4)
 
@@ -339,18 +351,18 @@ function animate() {
     elapsedTime = 0; // Reset the elapsed time
   }
 
+// to go back to the original rotation cahnge the first 1 into a 0
+  torus.rotation.x -= 1.11865367;
+  torus.rotation.y -= 1.119367;
+  torus.rotation.z -= 1.4354678;
 
-  torus.rotation.x -= 0.11865367;
-  torus.rotation.y -= 0.119367;
-  torus.rotation.z -= 0.4354678;
+  torus2.rotation.x += 1.08312087;
+  torus2.rotation.y += 1.082093;
+  torus2.rotation.z += 1.073049856;
 
-  torus2.rotation.x += 0.08312087;
-  torus2.rotation.y += 0.082093;
-  torus2.rotation.z += 0.073049856;
-
-  torus3.rotation.x -= 0.02;
-  torus3.rotation.y += 0.01;
-  torus3.rotation.z -= 0.02;
+  torus3.rotation.x -= 1.02;
+  torus3.rotation.y += 1.01;
+  torus3.rotation.z -= 1.02;
 
   earth.rotation.y += 0.05;
   earth.rotation.x += 0.001;

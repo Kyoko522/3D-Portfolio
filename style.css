@@ -37,6 +37,10 @@ li {
   padding-bottom: 1rem;
 }
 
+h2{
+  padding-top: 1rem;
+}
+
 main {
   width: 100vw;
   color: white;
@@ -257,6 +261,16 @@ h2 {
   min-width: 300px;
   min-height: 350px;
 }
+
+.project-bottom :hover{
+  transform: translate(-5px, -10px);
+}
+
+.project-item :hover{
+transform: none;
+}
+
+
 
 #projects .project-item::after {
   content: '';

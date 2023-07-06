@@ -270,7 +270,7 @@ scene.add(sheel);
 
 // Earth
 const earthTexture = new THREE.TextureLoader().load('earth.jpg');
-const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+const normalTexture = new THREE.TextureLoader().load('earth bump.jpg');
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -284,7 +284,7 @@ scene.add(earth);
 
 earth.position.z = 80;
 earth.position.x = -10;
-earth.position.y = 1.55;
+earth.position.y = -1.55;
 
 sheel.position.z = -5;
 sheel.position.x = 2;

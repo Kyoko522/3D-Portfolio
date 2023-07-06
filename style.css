@@ -270,6 +270,14 @@ h2 {
 transform: none;
 }
 
+.bold{
+  font-weight: bold;
+}
+
+.resume-content{
+  font-size: 15px;
+}
+
 
 
 #projects .project-item::after {

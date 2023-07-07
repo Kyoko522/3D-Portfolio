@@ -264,6 +264,7 @@ h2 {
 
 .project-bottom :hover{
   transform: translate(-5px, -10px);
+  border-radius: 60px;
 }
 
 .project-item :hover{

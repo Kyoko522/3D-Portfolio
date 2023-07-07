@@ -142,7 +142,7 @@ rocket_model.load('model.gltf', function (gltf) {
 
 // Torus
 const geometry = new THREE.TorusGeometry(6, 0.87, 30, 1000,);
-const material = new THREE.MeshStandardMaterial({ color: "#000000" });
+const material = new THREE.MeshStandardMaterial({ color: "#36013F" });
 // const material = new THREE.MeshStandardMaterial({ color: "#A020F0" });
 const torus = new THREE.Mesh(geometry, material);
 torus.position.set(2.4, 0, -5)
@@ -283,8 +283,8 @@ const earth = new THREE.Mesh(
 scene.add(earth);
 
 earth.position.z = 80;
-earth.position.x = -10;
-earth.position.y = -1.55;
+earth.position.x = -30;
+earth.position.y = 1.55;
 
 sheel.position.z = -5;
 sheel.position.x = 2;

@@ -148,7 +148,7 @@ const torus = new THREE.Mesh(geometry, material);
 torus.position.set(2.4, 0, -5)
 
 const geometry2 = new THREE.TorusGeometry(12, 1.6, 30, 1000,);
-const material2 = new THREE.MeshStandardMaterial({ color: "#000000" })
+const material2 = new THREE.MeshStandardMaterial({ color: "#000040" })
 // const material2 = new THREE.MeshStandardMaterial({ color: "#34fe4f" })
 const torus2 = new THREE.Mesh(geometry2, material2);
 torus2.position.set(2.4, 0, -4)

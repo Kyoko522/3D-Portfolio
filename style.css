@@ -13,6 +13,9 @@ canvas {
   left: 0;
 }
 
+a{
+  text-decoration: none;
+}
 /* the whole screen */
 html {
   scroll-behavior: smooth;
@@ -427,3 +430,7 @@ transform: none;
 }
 
 /* End  Media Query For Desktop */
+
+
+/* For Buttons */
+

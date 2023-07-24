@@ -87,7 +87,7 @@ section {
   font-size: 1.25rem;
   line-height: 1.5;
   margin-bottom: var(--spacing);
-  min-width: 350px;
+  min-width: 500px;
   max-width: 700px;
 }
 
@@ -194,6 +194,7 @@ nav {
   padding-right: 8%;
   background-color: black;
   max-width: 700px;
+  width: 100%;
 }
 
 nav ul {
@@ -282,6 +283,10 @@ transform: none;
 .bold{
   font-weight: bold;
 }
+.resume{
+  max-width: 1000px;
+}
+
 
 .resume-content{
   font-size: 15px;

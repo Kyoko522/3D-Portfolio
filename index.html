@@ -10,6 +10,9 @@
 </head>
 
 <body>
+  <audio id="song" autopla>
+    <source src="music.mp3">
+  </audio>
 
   <canvas id="bg"></canvas>
 
@@ -29,7 +32,6 @@
 
       </nav>
     </section>
-
 
     <section id="title">
       <header>
@@ -119,7 +121,8 @@
             </p>
 
             <div class="container">
-            <div class="button"><a  href="https://github.com/Kyoko522/Flash_Cards" >Source Code</a>>
+              <a class="btn" href="https://github.com/Kyoko522/Flash_Cards" target="_blank"><button type="button"
+                id="git-button">Source Code</button></a></div>
           </div>
         </div>
       </div>
@@ -131,20 +134,21 @@
       <p class="red">Currently an Computer Science Student at Toronto Metropolitian University</p>
       <p class="red">Courses that I have taken:</p>
       <ul>
-        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/computer-science/CPS/109/">CPS 109 Introduction to Python</a></li>
-        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/computer-science/CPS/213/">CPS 213 Computer Organization</a></li>
-        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/mathematics/MTH/110/">MTH 110 Discrete Mathematics I</a></li>
-        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/computer-science/CPS/209/">CPS 209 Introduction to Java</a></li>
-        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/computer-science/CPS/310/">CPS 310 Computer Organization II</a></li>
-        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/mathematics/MTH/140/">MTH 140 Calculus I</a></li>
+        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/computer-science/CPS/109/" target="_blank">CPS 109 Introduction to Python</a></li>
+        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/computer-science/CPS/213/" target="_blank">CPS 213 Computer Organization</a></li>
+        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/mathematics/MTH/110/" target="_blank">MTH 110 Discrete Mathematics I</a></li>
+        <li class="red"><a class="red resume-content" href="Some link that doesn't exist anymore so i don't know what to write here so leave it blank until i find the right link" target="_blank">PCS 110 Physics</a></li>
+        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/computer-science/CPS/209/" target="_blank">CPS 209 Introduction to Java</a></li>
+        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/computer-science/CPS/310/" target="_blank">CPS 310 Computer Organization II</a></li>
+        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/mathematics/MTH/140/" target="_blank">MTH 140 Calculus I</a></li>
        
       </ul>
 
       <p class="red">Courses that I Plan to take</p>
       <ul>
-        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/mathematics/MTH/141/">MTH 141 Linear Algebra</a></li>
-        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/electrical-engineering/EES/512/">EES 512 Electric Circuits</a></li>
-        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/mechatronics/MTE/602/">MTE 602 Introduction to Robotics</a></li>
+        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/mathematics/MTH/141/" target="_blank">MTH 141 Linear Algebra</a></li>
+        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/electrical-engineering/EES/512/" target="_blank">EES 512 Electric Circuits</a></li>
+        <li class="red"><a class="red resume-content" href="https://www.torontomu.ca/calendar/2023-2024/courses/mechatronics/MTE/602/" target="_blank">MTE 602 Introduction to Robotics</a></li>
       </ul>
 
       <h2 class="red">👩🏻‍🎓 Co-Op</h2>
@@ -349,6 +353,13 @@
         <a href="https://github.com/Kyoko522" target="_blank"><button type="button" id="git-button">GitHub</Source>
             </button></a>
 
+
+            <ul>
+              <li><a href="#"><i class="fa-brands fa-instagram instagram"></i></a></li>
+              <!-- <li><a href="#"><i class="fa-brands fa-whatsapp whatsapp"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-twitter twitter"></i></a></li> -->
+          </ul>
+
       </div>
     </section>
 
@@ -361,6 +372,7 @@
   </main>
 
   <script type="module" src="/main.js"></script>
+  <script type="module" src="/music.js"></script>
   <script src="https://threejs.org/build/three.js"></script>
 
 

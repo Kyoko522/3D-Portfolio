@@ -156,6 +156,10 @@ blockquote p {
   color: #FF14F0;
 }
 
+.project-top{
+  align-items: center;
+}
+
 .github-link {
   display: inline-block;
   padding: 10px 20px;
@@ -232,6 +236,7 @@ h2 {
   max-width: 1500px;
   margin: 0 auto;
   padding: 100px 0;
+  border-radius: 0.5rem;
 }
 
 #projects .project-top {

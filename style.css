@@ -13,9 +13,10 @@ canvas {
   left: 0;
 }
 
-a{
+a {
   text-decoration: none;
 }
+
 /* the whole screen */
 html {
   scroll-behavior: smooth;
@@ -40,7 +41,7 @@ li {
   padding-bottom: 1rem;
 }
 
-h2{
+h2 {
   padding-top: 1rem;
 }
 
@@ -156,7 +157,7 @@ blockquote p {
   color: #FF14F0;
 }
 
-.project-top{
+.project-top {
   align-items: center;
 }
 
@@ -271,24 +272,25 @@ h2 {
   min-height: 350px;
 }
 
-.project-bottom :hover{
+.project-bottom :hover {
   transform: translate(-5px, -10px);
   border-radius: 60px;
 }
 
-.project-item :hover{
-transform: none;
+.project-item :hover {
+  transform: none;
 }
 
-.bold{
+.bold {
   font-weight: bold;
 }
-.resume{
+
+.resume {
   max-width: 1000px;
 }
 
 
-.resume-content{
+.resume-content {
   font-size: 15px;
   margin-left: 1rem;
 }
@@ -443,4 +445,3 @@ transform: none;
 
 
 /* For Buttons */
-

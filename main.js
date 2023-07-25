@@ -15,6 +15,7 @@ let mouseY = 0;
 let delayTimer = 1000; // Delay duration in milliseconds
 let elapsedTime = 0;
 let modelFollowsCursor = false;
+var screen_width = window.innerWidth;
 
 //Creating a new Scene
 const scene = new THREE.Scene();//creating a new scene
@@ -34,13 +35,22 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
 
 //Function to load a 3D model with animation
-function loadModelWithAnimation(loader, modelPath, position, scale, rotationSpeed) {
+function loadModelWithAnimation(loader, modelPath, largeScreenPosition, scale, rotationSpeed, smallScreenPosition) {
   loader.load(modelPath, function (gltf) {
     const model = gltf.scene;
     scene.add(model);
 
+    console.log(screen_width)
     model.scale.set(scale, scale, scale);
-    model.position.copy(position);
+    if (screen_width >= 1700) {
+      model.position.copy(largeScreenPosition);
+    }
+    else if (screen_width >= 1300 && screen_width <= 1700) {
+      model.position.copy(smallScreenPosition)
+    }
+    else {
+      model.position.copy(smallScreenPosition)
+    }
 
     function animate() {
       requestAnimationFrame(animate);
@@ -58,28 +68,43 @@ const raphtalia = new GLTFLoader();
 const chopper = new GLTFLoader();
 const rocket_model = new GLTFLoader();
 
+// function updatePositionBasedOnScreenSize() {
+//   const screenWidth = window.innerWidth;
+//   const yamato = ...; // Get a reference to the yamato object, or you can pass it as an argument to this function
+
+//   if (screenWidth < 1500) {
+//     loadModelWithAnimation(yamato, 'yamato.gltf', new THREE.Vector3(smallScreenPositionX, smallScreenPositionY, smallScreenPositionZ), 0.07, 0.05);
+//   } else {
+//     loadModelWithAnimation(yamato, 'yamato.gltf', new THREE.Vector3(largeScreenPositionX, largeScreenPositionY, largeScreenPositionZ), 0.07, 0.05);
+//   }
+// }
+
 loadModelWithAnimation(
   yamato,
   'yamato.gltf',
-  new THREE.Vector3(-29.98, -27.4, 12), 
-  0.07, 
-  0.05
+  new THREE.Vector3(-35.98, -26.4, 12),
+  0.07,
+  0.05,
+  new THREE.Vector3(-17.98, -26.4, 12)
 );
+
 
 loadModelWithAnimation(
   raphtalia,
   'anime2.gltf',
-  new THREE.Vector3(-39.98, -29.4, 14), 
-  0.068, 
-  -0.05
+  new THREE.Vector3(-45.98, -27.4, 14),
+  0.068,
+  -0.05,
+  new THREE.Vector3(-27.98, -28.4, 14)
 );
 
 loadModelWithAnimation(
   chopper,
   'chopper.gltf',
-  new THREE.Vector3(-52.98, -26.4, 16), 
-  0.068, 
-  0.05
+  new THREE.Vector3(-58.98, -24.4, 16),
+  0.068,
+  0.05,
+  new THREE.Vector3(-40.98, -25.4, 16)
 );
 
 rocket_model.load('model.gltf', function (gltf) {
@@ -225,19 +250,29 @@ sun.position.x = -150
 sun.position.z = 0
 sun.position.y = -10
 
+
+const resume_geometry = new THREE.BoxBufferGeometry(1,1,1);
+const resume_material = new THREE.MeshBasicMaterial({color: 0xffffff});
+const resume_cube = new THREE.Mesh( resume_geometry, resume_material);
+scene.add(resume_cube);
+
+resume_cube.position.set(5,-0,380);
+
+
+
 //create a blue LineBasicMaterial
-const helpers = new THREE.LineBasicMaterial( { color: 0x0000ff } );
+const helpers = new THREE.LineBasicMaterial({ color: 0x0000ff });
 
 const points = [];
-points.push( new THREE.Vector3( 0, 0, 100 ) );
-points.push( new THREE.Vector3( 0, 100, 0 ) );
-points.push( new THREE.Vector3( 100, 0, 0 ) );
+points.push(new THREE.Vector3(0, 0, 100));
+points.push(new THREE.Vector3(0, 100, 0));
+points.push(new THREE.Vector3(100, 0, 0));
 
-const lines = new THREE.BufferGeometry().setFromPoints( points );
+const lines = new THREE.BufferGeometry().setFromPoints(points);
 
-const line = new THREE.Line( lines, helpers );
+const line = new THREE.Line(lines, helpers);
 
-scene.add( line );
+scene.add(line);
 
 
 // Scroll Animation
@@ -280,7 +315,7 @@ function animate() {
     elapsedTime = 0; // Reset the elapsed time
   }
 
-// to go back to the original rotation cahnge the first 1 into a 0
+  // to go back to the original rotation cahnge the first 1 into a 0
   torus.rotation.x -= 0.91865367;
   torus.rotation.y -= 0.919367;
   torus.rotation.z -= 0.9354678;
@@ -314,6 +349,7 @@ window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  screen_width = window.innerWidth;
 });
 animate();
 
@@ -324,3 +360,11 @@ window.addEventListener('mousemove', (event) => {
   modelFollowsCursor = true; // Start following the cursor when mouse movement is detected
 });
 
+
+
+
+
+// notes here at 1185 to 1772 all three nodel need to move to the right
+// all models still need to be clickable currently they are doing nothing
+// also need ot split up the main.js into smaller file so that 
+// want the model to move or drift way when the user is scrolling down and drift back in place when scrolling back into the corrent place

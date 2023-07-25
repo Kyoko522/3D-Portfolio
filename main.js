@@ -261,6 +261,39 @@ scene.add(resume_cube);
 
 resume_cube.position.set(-8,-3,378);
 
+// Add an event listener to the canvas or container element
+const canvas = document.querySelector('canvas'); // Replace 'canvas' with the appropriate container element if needed
+canvas.addEventListener('click', onCubeClick, false);
+
+function onCubeClick(event) {
+    // Get the mouse click coordinates
+    const mouse = new THREE.Vector2();
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    // Raycasting to detect if the mouse click intersects with the cube
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(mouse, camera); // 'camera' is your Three.js camera object
+    const intersects = raycaster.intersectObject(resume_cube);
+
+    if (intersects.length > 0) {
+        // The cube is clicked
+        // Perform the download action here
+        downloadSomething(); // Replace this with your download function
+    }
+}
+
+function downloadSomething() {
+    // Implement your download logic here
+    // For example, you can create a downloadable link and simulate a click event
+    const link = document.createElement('a');
+    link.href = "Sheel's Resume2.pdf"; // Replace with the actual download file path
+    link.download = "Sheel's Resume2.pdf"; // Replace with the desired filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 
 
 //create a blue LineBasicMaterial

@@ -250,13 +250,16 @@ sun.position.x = -150
 sun.position.z = 0
 sun.position.y = -10
 
-
-const resume_geometry = new THREE.BoxBufferGeometry(1,1,1);
-const resume_material = new THREE.MeshBasicMaterial({color: 0xffffff});
-const resume_cube = new THREE.Mesh( resume_geometry, resume_material);
+// Adding a resume image next to the resume section
+const resume_texture = new THREE.TextureLoader().load('resume_pic.png'); //Adding a picture to the side of the box
+const resume_material =[  new THREE.MeshBasicMaterial({ map: resume_texture }), //this one is upside down
+  new THREE.MeshBasicMaterial({ map: resume_texture  }), //more images will or should be added later need 3 more images so that each face is different
+  new THREE.MeshBasicMaterial({ color: 0xffffff })
+]
+const resume_cube = new THREE.Mesh(new THREE.BoxGeometry(.5, 22, 17), resume_material);
 scene.add(resume_cube);
 
-resume_cube.position.set(5,-0,380);
+resume_cube.position.set(-8,-3,378);
 
 
 
@@ -333,6 +336,8 @@ function animate() {
 
   sheel_box.rotation.y += 0.05;
   sheel_box.rotation.z += 0.02;
+
+  resume_cube.rotation.y += 0.03;
 
   renderer.render(scene, camera);
 }

@@ -237,7 +237,6 @@ h2 {
   text-align: center;
   max-width: 1500px;
   margin: 0 auto;
-  padding: 100px 0;
   border-radius: 0.5rem;
 }
 
@@ -260,9 +259,7 @@ h2 {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  padding: 30px;
-  border-radius: 10px;
-  background-image: url(./img/img-1.png);
+  /* border-radius: 10px; */
   background-size: cover;
   margin: 10px 5%;
   position: relative;
@@ -272,30 +269,6 @@ h2 {
   min-height: 350px;
 }
 
-.project-bottom :hover {
-  transform: translate(-5px, -10px);
-  border-radius: 60px;
-}
-
-.project-item :hover {
-  transform: none;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.resume {
-  max-width: 1000px;
-}
-
-
-.resume-content {
-  font-size: 15px;
-  margin-left: 1rem;
-}
-
-
 
 #projects .project-item::after {
   content: '';
@@ -304,15 +277,9 @@ h2 {
   top: 0;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(60deg, #5f0a87 0%, #a4508b 100%);
+  background: transparent;
   opacity: 0.9;
   z-index: -1;
-}
-
-#projects .project-bottom .icon {
-  height: 80px;
-  width: 80px;
-  margin-bottom: 20px;
 }
 
 #projects .project-item h2 {
@@ -326,6 +293,50 @@ h2 {
 #projects .project-item p {
   color: black;
   text-align: left;
+}
+
+.flip-card {
+
+  width: 300px;
+  height: 350px;
+}
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: 10px
+}
+
+.flip-card-front {
+  background-image: linear-gradient(60deg, #5f0a87 0%, #a4508b 100%);
+  color: black;
+  border-radius: 10px;
+}
+
+.flip-card-back {
+  background-image: linear-gradient(60deg, #5f0a87 0%, #a4508b 100%);
+  color: black;
+  transform: rotateY(180deg);
+  border-radius: 10px;
 }
 
 /* End projects Section */
@@ -399,7 +410,19 @@ h2 {
 
   /* End projects Section */
 
+  .bold {
+    font-weight: bold;
+  }
 
+  .resume {
+    max-width: 1000px;
+  }
+
+
+  .resume-content {
+    font-size: 15px;
+    margin-left: 1rem;
+  }
 
 }
 

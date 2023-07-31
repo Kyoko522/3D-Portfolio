@@ -261,9 +261,9 @@ scene.add(tmu_logo);
 
 function resize_tmu_logo(){
 if (screen_width <=1700){
-tmu_logo.position.set(-50,-7,170);}
+tmu_logo.position.set(-52,-7,170);}
 else{
-  tmu_logo.position.set (-30,-3,130);
+  tmu_logo.position.set (-36,-3,130);
 }}
 resize_tmu_logo();
 

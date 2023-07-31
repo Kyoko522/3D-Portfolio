@@ -1,6 +1,8 @@
 @import url("https://use.typekit.net/jmk3xov.css");
 
 /* This is for the three.js affects where all the shapes are located */
+
+/* Setup Start */
 * {
   padding: 0;
   margin: 0;
@@ -91,10 +93,7 @@ section {
   min-width: 500px;
   max-width: 700px;
 }
-
-.project-list {
-  margin-bottom: 2rem;
-}
+/* Setup End */
 
 .hero {
   position: fixed;
@@ -106,6 +105,8 @@ section {
   font-size: .85rem;
 }
 
+
+/* Black quote Section Start */
 blockquote {
   margin: 0;
   padding: 0;
@@ -120,11 +121,14 @@ blockquote p {
   display: inline;
   line-height: 1;
 }
+/* Black Quote Sections End */
 
+/* Move the Section to the left side for the screen */
 .left {
   grid-column: 7 / 12;
 }
 
+/* Colors Start*/
 .blue {
   color: #04d9ff;
 }
@@ -155,6 +159,13 @@ blockquote p {
 
 .pink {
   color: #FF14F0;
+}
+/* Colors End */
+
+
+.link :hover{
+  transform: translate(-5px, -10px);
+  text-decoration: underline;
 }
 
 .project-top {
@@ -226,12 +237,14 @@ h2 {
 }
 
 
-
 /* @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
 
 
 
 /* projects Section */
+
+
+
 #projects .projects {
   flex-direction: column;
   text-align: center;
@@ -295,12 +308,14 @@ h2 {
   text-align: left;
 }
 
-.flip-card {
+.project-list {
+  margin-bottom: 2rem;
+}
 
+.flip-card {
   width: 300px;
   height: 350px;
 }
-
 
 .flip-card-inner {
   position: relative;
@@ -337,6 +352,11 @@ h2 {
   color: black;
   transform: rotateY(180deg);
   border-radius: 10px;
+}
+
+#projects .project-bottom .project-item {
+  flex-basis: 45%;
+  margin: 2.5%;
 }
 
 /* End projects Section */
@@ -402,12 +422,6 @@ h2 {
 
   /* End Hero */
 
-  /* projects Section */
-  #projects .project-bottom .project-item {
-    flex-basis: 45%;
-    margin: 2.5%;
-  }
-
   /* End projects Section */
 
   .bold {
@@ -467,4 +481,42 @@ h2 {
 /* End  Media Query For Desktop */
 
 
-/* For Buttons */
+
+/* For the Social Buttons */
+ul li a .fa-brands {
+  font-size: 6em;
+  color: #222;
+}
+ul li a::before {
+  font-family: "FontAwesome";
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 6em;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s ease-in-out;
+}
+
+ul li:nth-child(1) a::before {
+  content: "\f16d";
+  background-image: linear-gradient(45deg, 
+    #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,
+    #bc1888 100%);
+  -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+  border-bottom: 4px solid #dc2743;
+}
+ul li:nth-child(2) a::before {
+  content: "\f232";
+  color: #25D366;
+  border-bottom: 4px solid #25D366;
+}
+ul li:nth-child(3) a::before {
+  content: "\f099";
+  color: #1DA1F2;
+  border-bottom: 4px solid #1DA1F2;
+}
+ul li:hover a::before {
+  height: 100%;
+}

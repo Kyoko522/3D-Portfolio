@@ -196,10 +196,11 @@ scene.background = spaceTexture;
 const sheelTexture = new THREE.TextureLoader().load('Sheel\'s Pic/sheel.png'); //Adding a picture to the side of the box
 const sheelTexture2 = new THREE.TextureLoader().load('Sheel\'s Pic/sheel2.png'); //Adding a picture to another side of the box
 const sheelTexture3 = new THREE.TextureLoader().load('Sheel\'s Pic/sheel3.png'); //Adding a picture to another side of the box
+const sheelTexture4 = new THREE.TextureLoader().load('Sheel\'s Pic/sheel4.png'); //Adding a picture to another
 
 const cubematerial = [
   new THREE.MeshBasicMaterial({ map: sheelTexture }), //this one is upside down
-  new THREE.MeshBasicMaterial({ map: sheelTexture }), //more images will or should be added later need 3 more images so that each face is different
+  new THREE.MeshBasicMaterial({ map: sheelTexture4 }), //more images will or should be added later need 3 more images so that each face is different
   new THREE.MeshBasicMaterial({ map: sheelTexture2 }),
   new THREE.MeshBasicMaterial({ map: sheelTexture2 }),
   new THREE.MeshBasicMaterial({ map: sheelTexture3 }),

@@ -81,7 +81,7 @@ const rocket_model = new GLTFLoader();
 
 loadModelWithAnimation(
   yamato,
-  'yamato.gltf',
+  'Model\'s/yamato.gltf',
   new THREE.Vector3(-35.98, -26.4, 12),
   0.07,
   0.05,
@@ -91,7 +91,7 @@ loadModelWithAnimation(
 
 loadModelWithAnimation(
   raphtalia,
-  'anime2.gltf',
+  'Model\'s/anime2.gltf',
   new THREE.Vector3(-45.98, -27.4, 14),
   0.068,
   -0.05,
@@ -100,14 +100,14 @@ loadModelWithAnimation(
 
 loadModelWithAnimation(
   chopper,
-  'chopper.gltf',
+  'Model\'s/chopper.gltf',
   new THREE.Vector3(-58.98, -24.4, 16),
   0.068,
   0.05,
   new THREE.Vector3(-40.98, -25.4, 16)
 );
 
-rocket_model.load('model.gltf', function (gltf) {
+rocket_model.load('Model\'s/model.gltf', function (gltf) {
   const rocket = gltf.scene;
   // scene.add(rocket);//removing the rocket for now will added it later when i get the movement right
 
@@ -193,9 +193,9 @@ const spaceTexture = new THREE.TextureLoader();
 scene.background = spaceTexture;
 
 // Avatar
-const sheelTexture = new THREE.TextureLoader().load('sheel.png'); //Adding a picture to the side of the box
-const sheelTexture2 = new THREE.TextureLoader().load('sheel2.png'); //Adding a picture to another side of the box
-const sheelTexture3 = new THREE.TextureLoader().load('sheel3.png'); //Adding a picture to another side of the box
+const sheelTexture = new THREE.TextureLoader().load('Sheel\'s Pic/sheel.png'); //Adding a picture to the side of the box
+const sheelTexture2 = new THREE.TextureLoader().load('Sheel\'s Pic/sheel2.png'); //Adding a picture to another side of the box
+const sheelTexture3 = new THREE.TextureLoader().load('Sheel\'s Pic/sheel3.png'); //Adding a picture to another side of the box
 
 const cubematerial = [
   new THREE.MeshBasicMaterial({ map: sheelTexture }), //this one is upside down
@@ -210,8 +210,8 @@ const sheel_box = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), cubematerial);
 scene.add(sheel_box);
 
 // Earth
-const earthTexture = new THREE.TextureLoader().load('earth.jpg');
-const normalTexture = new THREE.TextureLoader().load('earth bump.jpg');
+const earthTexture = new THREE.TextureLoader().load('Model\'s/earth.jpg');
+const normalTexture = new THREE.TextureLoader().load('Model\'s/earth bump.jpg');
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -233,7 +233,7 @@ sheel_box.position.x = 2;
 
 
 // Sun
-const sunTexture = new THREE.TextureLoader().load('sun_texture.jpg');
+const sunTexture = new THREE.TextureLoader().load('Model\'s/sun_texture.jpg');
 
 const sun = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -251,7 +251,7 @@ sun.position.z = 0
 sun.position.y = -10
 
 // Adding a tmu logo to the edcuation section
-const school_logo = new THREE.TextureLoader().load('TMU-rgb.png'); //Adding a picture to the side of the box
+const school_logo = new THREE.TextureLoader().load('Projects Pics/TMU-rgb.png'); //Adding a picture to the side of the box
 const tmu_materal =[  new THREE.MeshBasicMaterial({ map: school_logo }), //this one is upside down
   new THREE.MeshBasicMaterial({ map: school_logo  }), //more images will or should be added later need 3 more images so that each face is different
   new THREE.MeshBasicMaterial({ color: 0x0c9708 }), //

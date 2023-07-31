@@ -250,6 +250,24 @@ sun.position.x = -150
 sun.position.z = 0
 sun.position.y = -10
 
+// Adding a tmu logo to the edcuation section
+const school_logo = new THREE.TextureLoader().load('TMU-rgb.png'); //Adding a picture to the side of the box
+const tmu_materal =[  new THREE.MeshBasicMaterial({ map: school_logo }), //this one is upside down
+  new THREE.MeshBasicMaterial({ map: school_logo  }), //more images will or should be added later need 3 more images so that each face is different
+  new THREE.MeshBasicMaterial({ color: 0x0c9708 }), //
+]
+const tmu_logo = new THREE.Mesh(new THREE.BoxGeometry(1, 14.5, 29), tmu_materal);
+scene.add(tmu_logo);
+
+function resize_tmu_logo(){
+if (screen_width <=1700){
+tmu_logo.position.set(-50,-7,170);}
+else{
+  tmu_logo.position.set (-30,-3,130);
+}}
+resize_tmu_logo();
+
+
 // Adding a resume image next to the resume section
 const resume_texture = new THREE.TextureLoader().load('resume_pic.png'); //Adding a picture to the side of the box
 const resume_material =[  new THREE.MeshBasicMaterial({ map: resume_texture }), //this one is upside down
@@ -372,6 +390,8 @@ function animate() {
 
   resume_cube.rotation.y += 0.03;
 
+  tmu_logo.rotation.y += 0.03
+
   renderer.render(scene, camera);
 }
 
@@ -388,6 +408,7 @@ window.addEventListener("resize", () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
   screen_width = window.innerWidth;
+  resize_tmu_logo();
 });
 animate();
 

@@ -161,6 +161,7 @@ const starColors = [
   "#014760", // dark/navy blue stars
   "#25f5fc", // bright blue stars
   "#ffffff", // white stars
+  "#ffffff", // white stars
   "#34fe4f", // green stars
   "#d1fe49", // yellow stars
   "#FF5F1F", // orange stars
@@ -215,7 +216,7 @@ const earthTexture = new THREE.TextureLoader().load('Model\'s/earth.jpg');
 const normalTexture = new THREE.TextureLoader().load('Model\'s/earth bump.jpg');
 
 const earth = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.SphereGeometry(60, 32, 32),
   new THREE.MeshStandardMaterial({
     map: earthTexture,
     normalMap: normalTexture,
@@ -225,7 +226,7 @@ const earth = new THREE.Mesh(
 scene.add(earth);
 
 
-earth.position.x = -30;
+earth.position.x = -200;
 earth.position.z = 80;
 earth.position.y = 1.55;
 
@@ -234,10 +235,10 @@ sheel_box.position.x = 2;
 
 
 // Sun
-const sunTexture = new THREE.TextureLoader().load('Model\'s/sun_texture.jpg');
+const sunTexture = new THREE.TextureLoader().load('Model\'s/moon.png');
 
 const sun = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.SphereGeometry(20, 32, 32),
   new THREE.MeshStandardMaterial({
     map: sunTexture,
     normalMap: normalTexture,
@@ -247,15 +248,15 @@ const sun = new THREE.Mesh(
 scene.add(sun);
 
 
-sun.position.x = -150
-sun.position.z = 0
-sun.position.y = -10
+sun.position.x = -250;
+sun.position.y = 0;
+sun.position.z = -31
 
 // Adding a tmu logo to the edcuation section
 const school_logo = new THREE.TextureLoader().load('Projects Pics/TMU-rgb.png'); //Adding a picture to the side of the box
 const tmu_materal =[  new THREE.MeshBasicMaterial({ map: school_logo }), //this one is upside down
   new THREE.MeshBasicMaterial({ map: school_logo  }), //more images will or should be added later need 3 more images so that each face is different
-  new THREE.MeshBasicMaterial({ color: 0x0c9708 }), //
+  new THREE.MeshBasicMaterial({ color: 0x000000 }), //
 ]
 const tmu_logo = new THREE.Mesh(new THREE.BoxGeometry(1, 14.5, 29), tmu_materal);
 scene.add(tmu_logo);
@@ -268,6 +269,27 @@ else{
 }}
 resize_tmu_logo();
 
+
+// Adding a tmu logo to the edcuation section
+const java_cert_loader = new THREE.TextureLoader().load('Model\'s/java cert.png'); //Adding a picture to the side of the box
+const java_cert_materal =[  new THREE.MeshBasicMaterial({ map: java_cert_loader }), //this one is upside down
+  new THREE.MeshBasicMaterial({ map: java_cert_loader  }), //more images will or should be added later need 3 more images so that each face is different
+  new THREE.MeshBasicMaterial({ color: 0x000000 }), //
+]
+const java_cert = new THREE.Mesh(new THREE.BoxGeometry(1, 34, 44),java_cert_materal);
+scene.add(java_cert);
+
+function resize_java_cert(){
+if (screen_width <=1700){
+java_cert.position.set(-40,0,355);
+java_cert.scale.set(1,1,1)} //When the screen goes back to the small preview go back to the original scale for the model
+else{
+  java_cert.scale.set(2, 2, 2); //When the screen is large the model will be 2 time bigger in all deminations
+  java_cert.position.set (-140,10,400); //change the position to when the screen is bigger
+}
+} 
+
+resize_java_cert();
 
 // Adding a resume image next to the resume section
 const resume_texture = new THREE.TextureLoader().load('resume_pic.png'); //Adding a picture to the side of the box
@@ -384,7 +406,7 @@ function animate() {
   torus3.rotation.z -= 0.02;
 
   earth.rotation.y += 0.05;
-  earth.rotation.x += 0.001;
+  earth.rotation.x += -0.003;
 
   sheel_box.rotation.y += 0.05;
   sheel_box.rotation.z += 0.02;
@@ -392,6 +414,8 @@ function animate() {
   resume_cube.rotation.y += 0.03;
 
   tmu_logo.rotation.y += 0.03
+
+  java_cert.rotation.y += -0.03
 
   renderer.render(scene, camera);
 }
@@ -410,6 +434,7 @@ window.addEventListener("resize", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   screen_width = window.innerWidth;
   resize_tmu_logo();
+  resize_java_cert();
 });
 animate();
 
@@ -428,3 +453,11 @@ window.addEventListener('mousemove', (event) => {
 // all models still need to be clickable currently they are doing nothing
 // also need ot split up the main.js into smaller file so that 
 // want the model to move or drift way when the user is scrolling down and drift back in place when scrolling back into the corrent place
+
+
+
+// Notes for Next Time
+
+// - For the models like the tmu model, the cert model and resume make it a function next time so that you don't keep copy pasting the same time of code
+// - Use class and other files to break your code down so that it's organized making it a lot easier to find what your looking for (don't do everything in one file)
+//

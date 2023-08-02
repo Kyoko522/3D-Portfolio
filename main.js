@@ -460,4 +460,4 @@ window.addEventListener('mousemove', (event) => {
 
 // - For the models like the tmu model, the cert model and resume make it a function next time so that you don't keep copy pasting the same time of code
 // - Use class and other files to break your code down so that it's organized making it a lot easier to find what your looking for (don't do everything in one file)
-//
+// - When deploying your website you will need to turn the image into url so use this link https://vitejs.dev/guide/assets.html

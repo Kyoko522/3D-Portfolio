@@ -78,10 +78,11 @@ const rocket_model = new GLTFLoader();
 //     loadModelWithAnimation(yamato, 'yamato.gltf', new THREE.Vector3(largeScreenPositionX, largeScreenPositionY, largeScreenPositionZ), 0.07, 0.05);
 //   }
 // }
+// import Yamato_model from './Model\'s/yamato.gltf'
 
 loadModelWithAnimation(
   yamato,
-  'Model\'s/yamato.gltf',
+  'public/Model\'s/yamato.gltf',
   new THREE.Vector3(-35.98, -26.4, 12),
   0.07,
   0.05,
@@ -91,7 +92,7 @@ loadModelWithAnimation(
 
 loadModelWithAnimation(
   raphtalia,
-  'Model\'s/anime2.gltf',
+  'public/Model\'s/anime2.gltf',
   new THREE.Vector3(-45.98, -27.4, 14),
   0.068,
   -0.05,
@@ -100,7 +101,7 @@ loadModelWithAnimation(
 
 loadModelWithAnimation(
   chopper,
-  'Model\'s/chopper.gltf',
+  'public/Model\'s/chopper.gltf',
   new THREE.Vector3(-58.98, -24.4, 16),
   0.068,
   0.05,

@@ -82,7 +82,7 @@ const rocket_model = new GLTFLoader();
 
 loadModelWithAnimation(
   yamato,
-  'public/Model\'s/yamato.gltf',
+  'Model\'s/yamato.gltf',
   new THREE.Vector3(-35.98, -26.4, 12),
   0.07,
   0.05,
@@ -92,7 +92,7 @@ loadModelWithAnimation(
 
 loadModelWithAnimation(
   raphtalia,
-  'public/Model\'s/anime2.gltf',
+  'Model\'s/anime2.gltf',
   new THREE.Vector3(-45.98, -27.4, 14),
   0.068,
   -0.05,
@@ -101,7 +101,7 @@ loadModelWithAnimation(
 
 loadModelWithAnimation(
   chopper,
-  'public/Model\'s/chopper.gltf',
+  'Model\'s/chopper.gltf',
   new THREE.Vector3(-58.98, -24.4, 16),
   0.068,
   0.05,
@@ -195,10 +195,10 @@ const spaceTexture = new THREE.TextureLoader();
 scene.background = spaceTexture;
 
 // Avatar
-const sheelTexture = new THREE.TextureLoader().load('Sheel\'s Pic/sheel.png'); //Adding a picture to the side of the box
-const sheelTexture2 = new THREE.TextureLoader().load('Sheel\'s Pic/sheel2.png'); //Adding a picture to another side of the box
-const sheelTexture3 = new THREE.TextureLoader().load('Sheel\'s Pic/sheel3.png'); //Adding a picture to another side of the box
-const sheelTexture4 = new THREE.TextureLoader().load('Sheel\'s Pic/sheel4.png'); //Adding a picture to another
+const sheelTexture = new THREE.TextureLoader().load('./Sheel\'s Pic/sheel.png'); //Adding a picture to the side of the box
+const sheelTexture2 = new THREE.TextureLoader().load('./Sheel\'s Pic/sheel2.png'); //Adding a picture to another side of the box
+const sheelTexture3 = new THREE.TextureLoader().load('./Sheel\'s Pic/sheel3.png'); //Adding a picture to another side of the box
+const sheelTexture4 = new THREE.TextureLoader().load('./Sheel\'s Pic/sheel4.png'); //Adding a picture to another
 
 const cubematerial = [
   new THREE.MeshBasicMaterial({ map: sheelTexture }), //this one is upside down
@@ -236,7 +236,7 @@ sheel_box.position.x = 2;
 
 
 // Sun
-const sunTexture = new THREE.TextureLoader().load('Model\'s/moon.png');
+const sunTexture = new THREE.TextureLoader().load('./public/Model\'s/moon.png');
 
 const sun = new THREE.Mesh(
   new THREE.SphereGeometry(20, 32, 32),

@@ -338,19 +338,19 @@ function downloadSomething() {
 
 
 
-//create a blue LineBasicMaterial
-const helpers = new THREE.LineBasicMaterial({ color: 0x0000ff });
+// create a blue LineBasicMaterial
+// const helpers = new THREE.LineBasicMaterial({ color: 0x0000ff });
 
-const points = [];
-points.push(new THREE.Vector3(0, 0, 100));
-points.push(new THREE.Vector3(0, 100, 0));
-points.push(new THREE.Vector3(100, 0, 0));
+// const points = [];
+// points.push(new THREE.Vector3(0, 0, 100));
+// points.push(new THREE.Vector3(0, 100, 0));
+// points.push(new THREE.Vector3(100, 0, 0));
 
-const lines = new THREE.BufferGeometry().setFromPoints(points);
+// const lines = new THREE.BufferGeometry().setFromPoints(points);
 
-const line = new THREE.Line(lines, helpers);
+// const line = new THREE.Line(lines, helpers);
 
-scene.add(line);
+// scene.add(line);
 
 
 // Scroll Animation

@@ -236,7 +236,7 @@ sheel_box.position.x = 2;
 
 
 // Sun
-const sunTexture = new THREE.TextureLoader().load('./public/Model\'s/moon.png');
+const sunTexture = new THREE.TextureLoader().load('./Model\'s/moon.png');
 
 const sun = new THREE.Mesh(
   new THREE.SphereGeometry(20, 32, 32),

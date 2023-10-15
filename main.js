@@ -185,7 +185,7 @@ function addStar() {
 }
 
 // Define the number of stars you want to add to the scene
-const numStars = 99999; // You can adjust this number as needed
+const numStars = 9999; // You can adjust this number as needed
 
 // Adding stars to the scene
 Array(numStars).fill().forEach(addStar);
@@ -321,11 +321,11 @@ function onCubeClick(event) {
     if (intersects.length > 0) {
         // The cube is clicked
         // Perform the download action here
-        downloadSomething(); // Replace this with your download function
+        downloadItems(); // Replace this with your download function
     }
 }
 
-function downloadSomething() {
+function downloadItems() {
     // Implement your download logic here
     // For example, you can create a downloadable link and simulate a click event
     const link = document.createElement('a');
@@ -394,23 +394,23 @@ function animate() {
   }
 
   // to go back to the original rotation cahnge the first 1 into a 0
-  torus.rotation.x -= 0.91865367;
-  torus.rotation.y -= 0.919367;
-  torus.rotation.z -= 0.9354678;
+  torus.rotation.x -= 0.0091865367;
+  torus.rotation.y -= 0.00919367;
+  torus.rotation.z -= 0.009354678;
 
-  torus2.rotation.x += 0.08312087;
-  torus2.rotation.y += 0.082093;
-  torus2.rotation.z += 0.073049856;
+  torus2.rotation.x += 0.0112087;
+  torus2.rotation.y += 0.0082093;
+  torus2.rotation.z += 0.0073049856;
 
-  torus3.rotation.x -= 0.02;
-  torus3.rotation.y += 0.01;
-  torus3.rotation.z -= 0.02;
+  torus3.rotation.x -= 0.002;
+  torus3.rotation.y += 0.001;
+  torus3.rotation.z -= 0.002;
 
-  earth.rotation.y += 0.05;
-  earth.rotation.x += -0.003;
+  earth.rotation.y += 0.009;
+  earth.rotation.x += -0.0003;
 
-  sheel_box.rotation.y += 0.05;
-  sheel_box.rotation.z += 0.02;
+  sheel_box.rotation.y += 0.02;
+  sheel_box.rotation.z += 0.002;
 
   resume_cube.rotation.y += 0.03;
 
@@ -462,6 +462,3 @@ window.addEventListener('mousemove', (event) => {
 // - For the models like the tmu model, the cert model and resume make it a function next time so that you don't keep copy pasting the same time of code
 // - Use class and other files to break your code down so that it's organized making it a lot easier to find what your looking for (don't do everything in one file)
 // - When deploying your website you will need to turn the image into url so use this link https://vitejs.dev/guide/assets.html         --Didn't really need to do this i just moved the images to public folder and it fixed the problem with
-
-
-//hello does the git work here
